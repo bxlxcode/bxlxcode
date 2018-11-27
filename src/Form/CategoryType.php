@@ -32,6 +32,7 @@ class CategoryType extends AbstractType
                 'expanded' => true,
             ])
         ;
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

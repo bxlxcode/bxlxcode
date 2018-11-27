@@ -26,7 +26,7 @@ class AppFixtures extends Fixture
 
                 // création des langues disponibles
                 $languageAvailable = new LanguageAvailable();
-                $languageAvailable->setName($faker->countryCode);
+                $languageAvailable->setName($faker->country);
                 $languageAvailable->setIso($faker->countryCode);
                 $manager->persist($languageAvailable);
 
