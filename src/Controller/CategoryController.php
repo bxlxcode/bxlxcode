@@ -9,6 +9,7 @@ use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Repository\CategoryTranslationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Persistence\Mapping\ClassMetadata;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -69,14 +70,16 @@ class CategoryController extends AbstractController
         // ce formulaire ne traite pas les mises à jour des traductions
         if ($form->isSubmitted() && $form->isValid()) {
 
+
             // afficher les modifications qui sont faites dans des bêtes champs, mais pas dans la relation
             $uow = $entityManager->getUnitOfWork();
-
-            dump($uow);
-
             $uow->computeChangeSets();
-            $changeset = $uow->getEntityChangeSet($category);
-            dump($changeset);
+            $origine = $uow->getEntityChangeSet($category);
+            dump($origine);
+
+            // affiche les modifications qui sont faites dans la reation
+            $second = $uow->getScheduledCollectionUpdates();
+            dump($second);
 
             $objectManager->persist($category);
             $objectManager->flush();
@@ -86,6 +89,7 @@ class CategoryController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}/show", name="category_show")
@@ -134,6 +138,9 @@ class CategoryController extends AbstractController
 
     }
 
+
+
+    // use it
     public function bakcup (Request $request, ObjectManager $objectManager, Category $category = null)
     {
 
