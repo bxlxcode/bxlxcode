@@ -2,25 +2,30 @@
 
 namespace App\Form;
 
-use App\Entity\LanguageSource;
+use App\Entity\PictureCategoryTranslation;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LanguageSourceType extends AbstractType
+class PictureCategoryTranslationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('createdAt')
+            ->add('updatedAt')
             ->add('name')
-            ->add('iso')
+            ->add('description')
+            ->add('isTranslated')
+            ->add('languageAvailable')
+            ->add('pictureCategory')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => LanguageSource::class,
+            'data_class' => PictureCategoryTranslation::class,
         ]);
     }
 }
