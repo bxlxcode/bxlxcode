@@ -4,9 +4,16 @@
 
 {% block body %}
 
-    {% for trad in results.PictureCategoryTranslations %}
-        <p>Titre = {{ trad.name }} </p>
-        <p>Description = {{ trad.description }}</p>
+    {% for langue in results.languageAvailable %}
+
+        <p><img src="{{ langue.icon }}"> - {{ langue.id }}</p>
+
+        {% for toto in langue.pictureCategoryTranslations %}
+
+            <p>{{ toto.name }} - {{ toto.id }} </p>
+            <p>Description = {{ toto.description }} {{ toto.id }} </p>
+
+        {% endfor %}
         </br>
     {% endfor %}
 

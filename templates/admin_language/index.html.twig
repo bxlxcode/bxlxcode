@@ -4,6 +4,7 @@
 
 {% block body %}
 
+
     <table class="table">
         <thead>
         <tr>
@@ -11,7 +12,7 @@
             <th scope="col">name</th>
             <th scope="col">icon</th>
             <th scope="col">iso</th>
-            <th scope="col">Publier</th>
+            <th scope="col">Publié</th>
         </tr>
         </thead>
         <tbody>
@@ -25,9 +26,9 @@
                 <td>
 
                     {% if langue.isPublish == true %}
-                        <button type="button" class="btn btn-primary btn-sm">Publié</button>
+                        <span class="badge badge-primary">Oui</span>
                     {% else %}
-                        <button type="button" class="btn btn-secondary btn-sm">Non</button>
+                        <span class="badge badge-secondary">Non</span>
                     {% endif %}
 
                 </td>
@@ -36,4 +37,8 @@
 
         </tbody>
     </table>
+
+    <a href="{{ path('admin_language_add') }}" class="btn btn-outline-primary">Ajouter une nouvelle langue</a>
+
+
 {% endblock %}

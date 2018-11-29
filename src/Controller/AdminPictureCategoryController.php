@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\PictureCategory;
 use App\Entity\PictureCategoryTranslation;
 use App\Form\PictureCategoryType;
+use App\Repository\CategoryRepository;
 use App\Repository\PictureCategoryRepository;
 use App\Repository\PictureCategoryTranslationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -22,8 +23,9 @@ class AdminPictureCategoryController extends AbstractController
     public function add(Request $request, ObjectManager $objectManager) {
 
         $pictureCategory = new PictureCategory();
-        $pictureCategory->setCreatedAt(new \DateTime('now'));
-        $pictureCategory->setUpdatedAt(new \DateTime('now'));
+
+        $pictureCategory->setCreatedAt(new \DateTime('now'))
+                        ->setUpdatedAt(new \DateTime('now'));
 
         $form = $this->createForm(PictureCategoryType::class, $pictureCategory);
         $form->handleRequest($request);
@@ -38,8 +40,8 @@ class AdminPictureCategoryController extends AbstractController
 
                 $pictureCategoryTranslation->setCreatedAt(new \DateTime('now'))
                     ->setUpdatedAt(new \DateTime('now'))
-                    ->setName($pictureCategory->getName() .' en '. $pictureCategory->getLanguageAvailable()->get($res)->getName())
-                    ->setDescription($pictureCategory->getDescription() .' en '. $pictureCategory->getLanguageAvailable()->get($res)->getName())
+                    ->setName($pictureCategory->getName())
+                    ->setDescription($pictureCategory->getDescription())
                     ->setIsTranslated(true)
                     ->addPictureCategory($pictureCategory)
                     ->addLanguageAvailable($pictureCategory->getLanguageAvailable()->get($res));
@@ -47,6 +49,8 @@ class AdminPictureCategoryController extends AbstractController
                 $objectManager->persist($pictureCategoryTranslation);
                 $objectManager->flush();
             }
+
+            return $this->redirectToRoute('admin_picture_category');
 
         }
 
@@ -56,7 +60,6 @@ class AdminPictureCategoryController extends AbstractController
     /**
      * @Route("/admin/picture/category/{id}/edit", name="admin_picture_category_edit")
      */
-
 
     public function edit(Request $request, ObjectManager $objectManager, PictureCategory $pictureCategory, EntityManagerInterface $entityManager) {
 
@@ -103,45 +106,16 @@ class AdminPictureCategoryController extends AbstractController
         return $this->render('admin_picture_category/edit.html.twig', ['form' => $form->createView()]);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * @Route("/admin/picture/category", name="admin_picture_category")
      */
 
-    public function index()
+    public function index(PictureCategoryRepository $categoryRepository)
     {
-        return $this->render('admin_picture_category/index.html.twig');
+        $results = $categoryRepository->findAll();
+        return $this->render('admin_picture_category/index.html.twig', [
+            'results' => $results
+        ]);
     }
 
     /**
@@ -149,7 +123,7 @@ class AdminPictureCategoryController extends AbstractController
      */
     public function show(PictureCategory $pictureCategory) {
 
-        //dump($pictureCategory);
+        dump($pictureCategory->getLanguageAvailable());
 
         return $this->render('admin_picture_category/show.html.twig',[
             'results' => $pictureCategory

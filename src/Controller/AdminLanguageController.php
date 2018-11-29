@@ -26,6 +26,7 @@ class AdminLanguageController extends AbstractController
     /**
      * @Route("/admin/language/add", name="admin_language_add")
      */
+
     public function add(Request $request, ObjectManager $objectManager)
     {
 
@@ -40,6 +41,8 @@ class AdminLanguageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $objectManager->persist($language);
             $objectManager->flush();
+
+            return $this->redirectToRoute('admin_language');
         }
 
         return $this->render('admin_language/add.html.twig', [
