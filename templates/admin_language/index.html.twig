@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Langues{% endblock %}
+
+{% block body %}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#id</th>
+            <th scope="col">name</th>
+            <th scope="col">icon</th>
+            <th scope="col">iso</th>
+            <th scope="col">Publier</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for langue in results %}
+            <tr>
+                <th scope="row">{{ langue.id }}</th>
+                <td>{{ langue.name }}</td>
+                <td><img src="{{ langue.icon }}"></td>
+                <td>{{ langue.iso }}</td>
+                <td>
+
+                    {% if langue.isPublish == true %}
+                        <button type="button" class="btn btn-primary btn-sm">Publié</button>
+                    {% else %}
+                        <button type="button" class="btn btn-secondary btn-sm">Non</button>
+                    {% endif %}
+
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,15 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
-
-{% block title %}Editer{% endblock %}
+{% block title %}Ajouter une langue{% endblock %}
 
 {% block body %}
 
     {{ form_start(form) }}
     {{ form_widget(form) }}
 
-    <button type="submit">Editer</button>
+    <button type="submit">Ajouter une langue</button>
 
     {{ form_end(form) }}
 

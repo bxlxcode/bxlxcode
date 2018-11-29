@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ results.name }}{% endblock %}
+
+{% block body %}
+
+    {% for trad in results.PictureCategoryTranslations %}
+        <p>Titre = {{ trad.name }} </p>
+        <p>Description = {{ trad.description }}</p>
+        </br>
+    {% endfor %}
+
+{% endblock %}
