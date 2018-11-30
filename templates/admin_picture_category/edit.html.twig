@@ -6,6 +6,12 @@
 
 {% block body %}
 
+
+    {% for langue in pictureCategory.pictureCategoryTranslations %}
+        {% for rest in langue.languageAvailable %}
+            {% endfor %}
+    {% endfor %}
+
     {{ form_start(form) }}
     {{ form_widget(form) }}
 

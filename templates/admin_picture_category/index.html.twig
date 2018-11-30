@@ -10,6 +10,7 @@
             <th scope="col">#id</th>
             <th scope="col">name</th>
             <th scope="col">description</th>
+            <th scope="col">origine</th>
             <th scope="col">Publié</th>
         </tr>
         </thead>
@@ -20,6 +21,8 @@
                 <th scope="row">{{ langue.id }}</th>
                 <td>{{ langue.name }}</td>
                 <td>{{ langue.description }}</td>
+
+                <td><img src="{{ langue.languageSource.icon}}"> </td>
 
                 <td>
 

@@ -20,6 +20,7 @@ class AdminPictureCategoryController extends AbstractController
     /**
      * @Route("/admin/picture/category/add", name="admin_picture_category_add")
      */
+
     public function add(Request $request, ObjectManager $objectManager) {
 
         $pictureCategory = new PictureCategory();
@@ -39,12 +40,12 @@ class AdminPictureCategoryController extends AbstractController
                 $pictureCategoryTranslation = new PictureCategoryTranslation();
 
                 $pictureCategoryTranslation->setCreatedAt(new \DateTime('now'))
-                    ->setUpdatedAt(new \DateTime('now'))
-                    ->setName($pictureCategory->getName())
-                    ->setDescription($pictureCategory->getDescription())
-                    ->setIsTranslated(true)
-                    ->addPictureCategory($pictureCategory)
-                    ->addLanguageAvailable($pictureCategory->getLanguageAvailable()->get($res));
+                                            ->setUpdatedAt(new \DateTime('now'))
+                                            ->setName("")
+                                            ->setDescription("")
+                                            ->setIsTranslated(true)
+                                            ->addPictureCategory($pictureCategory)
+                                            ->addLanguageAvailable($pictureCategory->getLanguageAvailable()->get($res));
 
                 $objectManager->persist($pictureCategoryTranslation);
                 $objectManager->flush();
@@ -65,45 +66,67 @@ class AdminPictureCategoryController extends AbstractController
 
         $form = $this->createForm(PictureCategoryType::class, $pictureCategory);
         $form->handleRequest($request);
-
-        // toutes les traductions disponbiles
-        //dump($pictureCategory->getPictureCategoryTranslations()->getValues());
+        $pictureCategory->setUpdatedAt(new \DateTime('now'));
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $pictureCategory->setUpdatedAt(new \DateTime('now'));
 
-            $newids = new ArrayCollection();
-            $origineids = new ArrayCollection();
+            $currentTranslation = new ArrayCollection();
+            $newLanguage = new ArrayCollection();
 
-            dump($pictureCategory->getPictureCategoryTranslations()->getValues());
-
-            //$objectManager->persist($pictureCategory);
-            //$objectManager->flush();
-
-            // afficher les modifications qui sont faites dans des bêtes champs, mais pas dans la relation
-            $uow = $entityManager->getUnitOfWork();
-            $uow->computeChangeSets();
-            $changeset = $uow->getEntityChangeSet($pictureCategory);
-            //dump($changeset);
+            foreach ($pictureCategory->getPictureCategoryTranslations() as $translations) {
+                foreach ($translations->getLanguageAvailable() as $langue) {
+                    $currentTranslation->add($langue);
+                }
+            }
 
             // afficher les modifications qui sont faites dans une relation
             $uows = $entityManager->getUnitOfWork();
             $uows->computeChangeSets();
-            $changesetss = $uows->getScheduledEntityUpdates($pictureCategory);
-
+            $result = $uows->getScheduledEntityUpdates($pictureCategory);
             // localiser les nouveaux ajouts d'ids /// toto = object = Language = langueid
-            foreach ($changesetss as $test) {
-                foreach ($test->getLanguageAvailable()->getValues() as $toto) {
-                   // dump($toto->getId());
-                    $newids->add($toto->getId());
+            foreach ($result as $test) {
+                foreach ($test->getLanguageAvailable()->getValues() as $langue) {
+                    $newLanguage->add($langue);
                 }
             }
 
-            dump($newids);
+            // isoler les nouvelles langues ajoutées
+            foreach ($newLanguage->getValues() as $remove) {
+                foreach ($currentTranslation->getValues() as $current) {
+                    if ($remove == $current) {
+                        $newLanguage->removeElement($current);
+                    }
+                }
+            }
 
+
+            // ajouter les traductions pour chaque nouvelle langue détectée
+            foreach ($newLanguage->getValues() as $value) {
+
+                $pictureCategoryTranslation = new PictureCategoryTranslation();
+
+                $pictureCategoryTranslation->setCreatedAt(new \DateTime('now'))
+                    ->setUpdatedAt(new \DateTime('now'))
+                    ->setName("")
+                    ->setDescription("")
+                    ->setIsTranslated(true)
+                    ->addPictureCategory($pictureCategory)
+                    ->addLanguageAvailable($value);
+
+                $objectManager->persist($pictureCategoryTranslation);
+                $objectManager->flush();
+            }
+
+            $objectManager->persist($pictureCategory);
+            $objectManager->flush();
+
+            return $this->redirectToRoute('admin_picture_category');
         }
 
-        return $this->render('admin_picture_category/edit.html.twig', ['form' => $form->createView()]);
+        return $this->render('admin_picture_category/edit.html.twig', [
+            'form' => $form->createView(),
+            'pictureCategory' => $pictureCategory
+        ]);
     }
 
     /**
@@ -136,4 +159,56 @@ class AdminPictureCategoryController extends AbstractController
     public function delete() {
 
     }
+
+    public function backup() {
+        /*
+        $newLanguage = new ArrayCollection();
+        $currentLanguage = new ArrayCollection();
+        $nouvellesLangues = new ArrayCollection();
+
+        // as $key => $value
+        // localiser les traductions existantes
+        foreach ($pictureCategory->getPictureCategoryTranslations() as $translations) {
+            foreach ($translations->getLanguageAvailable() as $langue) {
+                $currentLanguage->add($langue->getId());
+            }
+        }
+
+        dump($currentLanguage);
+
+        // afficher les modifications qui sont faites dans des champs
+        $uow = $entityManager->getUnitOfWork();
+        $uow->computeChangeSets();
+        $changeset = $uow->getEntityChangeSet($pictureCategory);
+
+        // afficher les modifications qui sont faites dans une relation
+        $uows = $entityManager->getUnitOfWork();
+        $uows->computeChangeSets();
+        $changesetss = $uows->getScheduledEntityUpdates($pictureCategory);
+
+        // localiser les nouveaux ajouts d'ids /// toto = object = Language = langueid
+        foreach ($changesetss as $test) {
+            foreach ($test->getLanguageAvailable()->getValues() as $toto) {
+                // dump($toto->getId());
+                $newLanguage->add($toto->getId());
+                $nouvellesLangues->add($toto);
+            }
+        }
+
+        dump($newLanguage);
+
+        // comparer les values
+        $result = array_diff($newLanguage->getValues(), $currentLanguage->getValues());
+        dump($result);
+
+        dump($nouvellesLangues);
+
+
+        // ajouter les traductions ici pour les nouvelles langues cochées
+
+        //$objectManager->persist($pictureCategory);
+        //$objectManager->flush();
+        // return $this->redirectToRoute('admin_picture_category');
+    */
+        }
 }
