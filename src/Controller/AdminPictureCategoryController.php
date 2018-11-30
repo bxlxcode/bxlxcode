@@ -38,14 +38,23 @@ class AdminPictureCategoryController extends AbstractController
             foreach ($pictureCategory->getLanguageAvailable()->getKeys() as $res) {
 
                 $pictureCategoryTranslation = new PictureCategoryTranslation();
+                $pictureCategoryTranslation->setCreatedAt(new \DateTime('now'));
+                $pictureCategoryTranslation->setUpdatedAt(new \DateTime('now'));
 
-                $pictureCategoryTranslation->setCreatedAt(new \DateTime('now'))
-                                            ->setUpdatedAt(new \DateTime('now'))
-                                            ->setName("")
-                                            ->setDescription("")
-                                            ->setIsTranslated(true)
-                                            ->addPictureCategory($pictureCategory)
-                                            ->addLanguageAvailable($pictureCategory->getLanguageAvailable()->get($res));
+                // vérifier la langue source et créer un enregistrement lié
+                if ($pictureCategory->getLanguageSource() == $pictureCategory->getLanguageAvailable()->get($res)) {
+                    $pictureCategoryTranslation->setName($pictureCategory->getName());
+                    $pictureCategoryTranslation->setDescription($pictureCategory->getDescription());
+                    $pictureCategoryTranslation->setIsTranslated(true);
+                } else {
+                    // sinon, set les autres traductions sans values
+                    $pictureCategoryTranslation->setName($pictureCategory->getName());
+                    $pictureCategoryTranslation->setDescription($pictureCategory->getDescription());
+                    $pictureCategoryTranslation->setIsTranslated(false);
+                }
+
+                $pictureCategoryTranslation->addPictureCategory($pictureCategory);
+                $pictureCategoryTranslation->addLanguageAvailable($pictureCategory->getLanguageAvailable()->get($res));
 
                 $objectManager->persist($pictureCategoryTranslation);
                 $objectManager->flush();
@@ -107,9 +116,9 @@ class AdminPictureCategoryController extends AbstractController
 
                 $pictureCategoryTranslation->setCreatedAt(new \DateTime('now'))
                     ->setUpdatedAt(new \DateTime('now'))
-                    ->setName("")
-                    ->setDescription("")
-                    ->setIsTranslated(true)
+                    ->setName()
+                    ->setDescription()
+                    ->setIsTranslated(false)
                     ->addPictureCategory($pictureCategory)
                     ->addLanguageAvailable($value);
 
@@ -156,59 +165,16 @@ class AdminPictureCategoryController extends AbstractController
     /**
      * @Route("/admin/picture/category/{id}/delete", name="admin_picture_category_delete")
      */
-    public function delete() {
+    public function delete(ObjectManager $objectManager, PictureCategory $pictureCategory) {
 
-    }
+        // supprimer les traductions
 
-    public function backup() {
-        /*
-        $newLanguage = new ArrayCollection();
-        $currentLanguage = new ArrayCollection();
-        $nouvellesLangues = new ArrayCollection();
-
-        // as $key => $value
-        // localiser les traductions existantes
-        foreach ($pictureCategory->getPictureCategoryTranslations() as $translations) {
-            foreach ($translations->getLanguageAvailable() as $langue) {
-                $currentLanguage->add($langue->getId());
-            }
-        }
-
-        dump($currentLanguage);
-
-        // afficher les modifications qui sont faites dans des champs
-        $uow = $entityManager->getUnitOfWork();
-        $uow->computeChangeSets();
-        $changeset = $uow->getEntityChangeSet($pictureCategory);
-
-        // afficher les modifications qui sont faites dans une relation
-        $uows = $entityManager->getUnitOfWork();
-        $uows->computeChangeSets();
-        $changesetss = $uows->getScheduledEntityUpdates($pictureCategory);
-
-        // localiser les nouveaux ajouts d'ids /// toto = object = Language = langueid
-        foreach ($changesetss as $test) {
-            foreach ($test->getLanguageAvailable()->getValues() as $toto) {
-                // dump($toto->getId());
-                $newLanguage->add($toto->getId());
-                $nouvellesLangues->add($toto);
-            }
-        }
-
-        dump($newLanguage);
-
-        // comparer les values
-        $result = array_diff($newLanguage->getValues(), $currentLanguage->getValues());
-        dump($result);
-
-        dump($nouvellesLangues);
-
-
-        // ajouter les traductions ici pour les nouvelles langues cochées
-
-        //$objectManager->persist($pictureCategory);
+        // supprimer l'objet en question
+        // $objectManager->remove($pictureCategory);
         //$objectManager->flush();
+
         // return $this->redirectToRoute('admin_picture_category');
-    */
-        }
+
+        return $this->render('admin_picture_category/delete.html.twig');
+    }
 }

@@ -16,7 +16,6 @@ class PictureCategoryType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('isPublish')
 
             ->add('languageSource', EntityType::class,[
                 'class' => Language::class,
@@ -31,6 +30,8 @@ class PictureCategoryType extends AbstractType
                 'multiple' => true,
                 'expanded' => true,
             ])
+
+            ->add('isPublish')
 
         ;
     }

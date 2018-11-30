@@ -8,9 +8,10 @@
         <thead>
         <tr>
             <th scope="col">#id</th>
-            <th scope="col">name</th>
-            <th scope="col">description</th>
-            <th scope="col">origine</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Origine</th>
+            <th scope="col">Traduit</th>
             <th scope="col">Publié</th>
         </tr>
         </thead>
@@ -18,11 +19,29 @@
 
         {% for langue in results %}
             <tr>
-                <th scope="row">{{ langue.id }}</th>
+                <th scope="row"><a href="{{ path('admin_picture_category_edit', {'id':langue.id}) }}">{{ langue.id }}</a> </th>
                 <td>{{ langue.name }}</td>
                 <td>{{ langue.description }}</td>
 
                 <td><img src="{{ langue.languageSource.icon}}"> </td>
+
+                <td>
+
+                    {% for translation in  langue.pictureCategoryTranslations %}
+
+
+                        {% if translation.isTranslated == true %}
+
+                            {% for langue in translation.languageAvailable %}
+                                <img src="{{ langue.icon}}">
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                    {% endfor %}
+
+                </td>
 
                 <td>
 

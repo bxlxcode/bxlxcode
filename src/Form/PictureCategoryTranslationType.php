@@ -12,13 +12,9 @@ class PictureCategoryTranslationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('name')
             ->add('description')
             ->add('isTranslated')
-            ->add('languageAvailable')
-            ->add('pictureCategory')
         ;
     }
 

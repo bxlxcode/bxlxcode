@@ -19,7 +19,7 @@
 
         {% for langue in results %}
             <tr>
-                <th scope="row">{{ langue.id }}</th>
+                <th scope="row"><a href="{{ path('admin_language_edit',{'id':langue.id}) }}">{{ langue.id }}</a> </th>
                 <td>{{ langue.name }}</td>
                 <td><img src="{{ langue.icon }}"></td>
                 <td>{{ langue.iso }}</td>

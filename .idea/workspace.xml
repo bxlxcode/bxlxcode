@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="49945c97-a765-4e69-898c-51cb974a3ec1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/AdminPictureCategoryTranslationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/picture_category_translation/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/admin_picture_category/delete.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminPictureCategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminPictureCategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_picture_category/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_picture_category/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminPictureCategoryTranslationController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/PictureCategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/PictureCategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PictureCategoryTranslationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PictureCategoryTranslationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PictureCategoryType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PictureCategoryType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_language/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_language/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin_picture_category/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_picture_category/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/picture_category_translation/index.html.twig" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,20 +31,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/AdminPictureCategoryController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+            <state relative-caret-position="512">
+              <caret line="44" column="68" selection-start-line="44" selection-start-column="68" selection-end-line="44" selection-end-column="68" />
               <folding>
                 <element signature="e#34#65#0#PHP" expanded="true" />
-                <element signature="e#2368#2466#0#PHP" />
-                <element signature="e#2472#4772#0#PHP" />
-                <element signature="e#4778#4861#0#PHP" />
-                <element signature="e#4867#5117#0#PHP" />
-                <element signature="e#5123#5221#0#PHP" />
-                <element signature="e#5226#5471#0#PHP" />
-                <element signature="e#5477#5579#0#PHP" />
-                <element signature="e#5584#5617#0#PHP" />
-                <element signature="e#4237#6051#0#PHP" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Form/PictureCategoryTranslationType.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="23" column="54" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -76,25 +81,27 @@
         <option value="$PROJECT_DIR$/src/Entity/LanguageAvailable.php" />
         <option value="$PROJECT_DIR$/src/Controller/CategoryController.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/src/Form/PictureCategoryType.php" />
         <option value="$PROJECT_DIR$/src/Form/LanguageControllerType.php" />
         <option value="$PROJECT_DIR$/src/Form/Languageype.php" />
         <option value="$PROJECT_DIR$/src/Entity/Language.php" />
-        <option value="$PROJECT_DIR$/src/Entity/PictureCategory.php" />
         <option value="$PROJECT_DIR$/src/Entity/PictureCategoryTranslation.php" />
         <option value="$PROJECT_DIR$/templates/admin_picture_category/add.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin_language/add.html.twig" />
-        <option value="$PROJECT_DIR$/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/AdminLanguageController.php" />
-        <option value="$PROJECT_DIR$/templates/admin_language/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin_picture_category/show.html.twig" />
         <option value="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" />
         <option value="$PROJECT_DIR$/templates/admin_language/edit.html.twig" />
-        <option value="$PROJECT_DIR$/templates/admin_picture_category/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PictureCategoryTranslationController.php" />
         <option value="$PROJECT_DIR$/src/Controller/AdminPictureCategoryTranslationController.php" />
-        <option value="$PROJECT_DIR$/templates/picture_category_translation/index.html.twig" />
         <option value="$PROJECT_DIR$/templates/admin_picture_category/edit.html.twig" />
+        <option value="$PROJECT_DIR$/src/Entity/PictureCategory.php" />
+        <option value="$PROJECT_DIR$/src/Form/PictureCategoryType.php" />
+        <option value="$PROJECT_DIR$/templates/admin_picture_category/delete.html.twig" />
+        <option value="$PROJECT_DIR$/templates/admin_picture_category/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/picture_category_translation/index.html.twig" />
+        <option value="$PROJECT_DIR$/templates/base.html.twig" />
+        <option value="$PROJECT_DIR$/templates/admin_language/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/Form/PictureCategoryTranslationType.php" />
         <option value="$PROJECT_DIR$/src/Controller/AdminPictureCategoryController.php" />
       </list>
     </option>
@@ -239,12 +246,18 @@
               <item name="category" type="b2602c69:ProjectViewProjectNode" />
               <item name="category" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="Form" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="category" type="b2602c69:ProjectViewProjectNode" />
               <item name="category" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="category" type="b2602c69:ProjectViewProjectNode" />
+              <item name="category" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="admin_language" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -260,8 +273,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\m.samahi\Documents\formation\category\templates\admin_language" />
       <recent name="C:\Users\m.samahi\Documents\formation\category\templates\admin_picture_category" />
+      <recent name="C:\Users\m.samahi\Documents\formation\category\templates\admin_language" />
       <recent name="C:\Users\m.samahi\Documents\formation\category\templates\category" />
     </key>
   </component>
@@ -292,12 +305,12 @@
       <workItem from="1543338491437" duration="998000" />
       <workItem from="1543395697372" duration="2803000" />
       <workItem from="1543413481006" duration="14606000" />
-      <workItem from="1543485776480" duration="35115000" />
+      <workItem from="1543485776480" duration="41770000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83362000" />
+    <option name="totallyTimeSpent" value="90017000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -312,7 +325,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49888888" visible="true" weight="0.23134328" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49888888" visible="true" weight="0.23134328" />
       <window_info id="Structure" order="1" sideWeight="0.5021739" side_tool="true" weight="0.23134328" />
       <window_info id="Favorites" order="2" sideWeight="0.5011111" side_tool="true" visible="true" weight="0.23134328" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -337,8 +350,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/home/index.html.twig" />
-    <entry file="file://$PROJECT_DIR$/src/Repository/PostRepository.php" />
     <entry file="file://$PROJECT_DIR$/src/Entity/PostTranslation.php" />
     <entry file="file://$PROJECT_DIR$/src/Entity/Post.php" />
     <entry file="file://$USER_HOME$/Desktop/backup/Controller/TestController.php">
@@ -432,16 +443,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Form/PictureCategoryType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-          <folding>
-            <element signature="e#28#52#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/src 1/Entity/Category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-408" />
@@ -458,13 +459,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -524,34 +518,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin_language/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="37" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Entity/PictureCategory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin_picture_category/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="12" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="39" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/picture_category_translation/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin_picture_category/edit.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -559,42 +525,96 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PictureCategoryType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="30" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
+          <folding>
+            <element signature="e#28#52#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity/PictureCategory.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="23" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="e#30#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin_picture_category/delete.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminPictureCategoryTranslationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="15" selection-start-line="11" selection-start-column="15" selection-end-line="11" selection-end-column="50" />
+        <state relative-caret-position="306">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="33" />
           <folding>
             <element signature="e#34#90#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/picture_category_translation/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin_picture_category/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="43" column="21" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminLanguageController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="544">
+          <caret line="55" column="69" selection-start-line="55" selection-start-column="50" selection-end-line="55" selection-end-column="69" />
           <folding>
             <element signature="e#34#58#0#PHP" expanded="true" />
+            <element signature="e#790#1462#0#PHP" />
             <element signature="e#1557#2095#0#PHP" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin_language/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="86" selection-start-line="21" selection-start-column="86" selection-end-line="21" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Form/PictureCategoryTranslationType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="54" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/AdminPictureCategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="46" column="52" lean-forward="true" selection-start-line="46" selection-start-column="52" selection-end-line="46" selection-end-column="52" />
+        <state relative-caret-position="512">
+          <caret line="44" column="68" selection-start-line="44" selection-start-column="68" selection-end-line="44" selection-end-column="68" />
           <folding>
             <element signature="e#34#65#0#PHP" expanded="true" />
-            <element signature="e#2368#2466#0#PHP" />
-            <element signature="e#2472#4772#0#PHP" />
-            <element signature="e#4778#4861#0#PHP" />
-            <element signature="e#4867#5117#0#PHP" />
-            <element signature="e#5123#5221#0#PHP" />
-            <element signature="e#5226#5471#0#PHP" />
-            <element signature="e#5477#5579#0#PHP" />
-            <element signature="e#5584#5617#0#PHP" />
-            <element signature="e#4237#6051#0#PHP" />
           </folding>
         </state>
       </provider>
